@@ -1,0 +1,23 @@
+.app-menu {
+	max-width: 200px;
+
+	.btn-light {
+		background-color: transparent;
+		border-color: transparent;
+
+		&:hover,
+		&.hover,
+		// &:focus,
+		// &.focus,
+		&:active,
+		&.active {
+			background-color: darken(#f5f5f5, 5%);
+			border-color: darken(#f5f5f5, 7.5%);
+		}
+
+		&:active,
+		&.active {
+			font-weight: bold;
+		}
+	}
+}

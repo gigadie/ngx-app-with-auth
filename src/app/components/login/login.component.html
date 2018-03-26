@@ -1,0 +1,45 @@
+<div class="login">
+	<div class="container">
+		<div class="row">
+			<div class="mx-auto col-10 col-md-4 col-lg-3 my-3 my-md-5">
+				<h3 class="text-center mb-4">Login</h3>
+				<div class="login-form">
+					<form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+						<div class="form-group">
+							<label class="sr-only" for="username">Email</label>
+							<input type="text" formControlName="username" placeholder="Email" class="form-username form-control" required>
+							<div class="form-error">
+								<div *ngIf="username.dirty && username.touched && username.errors && username.errors.required">Email is required.</div>
+								<div *ngIf="username.dirty && username.touched && username.errors && username.errors.maxlength">Max length is 255.</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="password">Password</label>
+							<input type="password" formControlName="password" placeholder="Password" class="form-password form-control" required>
+							<div class="form-error">
+								<div *ngIf="password.dirty && password.touched && password.errors && password.errors.required">Password is required.</div>
+								<div *ngIf="password.dirty && password.touched && password.errors && password.errors.maxlength">Max length is 255.</div>
+							</div>
+						</div>
+						<button class="btn btn-secondary btn-block status-button login-reset-button" 
+								type="submit" 
+								[disabled]="loggingIn">
+							<span>SIGN<span *ngIf="loggingIn">ING</span> IN</span>
+							<i *ngIf="!loggingIn" class="mdi mdi-login"></i>
+							<div *ngIf="loggingIn" class="saving">
+								<div class="sk-three-bounce">
+									<div class="sk-child sk-bounce1"></div>
+									<div class="sk-child sk-bounce2"></div>
+									<div class="sk-child sk-bounce3"></div>
+								</div>
+							</div>
+						</button>
+						<div class="form-group error-message mt-2" *ngIf="loginError">
+							<p class="text-center">We couldn't log you in. Maybe you provided invalid credentials. Please try again.</p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

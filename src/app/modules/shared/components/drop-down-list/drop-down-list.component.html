@@ -1,0 +1,41 @@
+<div class="drop-down-list" [ngClass]="{'focus': !collapsed, 'with-value': selectedItem, 'disabled': disabled, 'with-error': withError}">
+	<div class="mask" *ngIf="!collapsed" (click)="close($event)"></div>
+	<div class="selected-value form-control">
+		<div *ngIf="loadingItems" class="loading text-muted">
+			<div class="sk-three-bounce">
+				<div class="sk-child sk-bounce1"></div>
+				<div class="sk-child sk-bounce2"></div>
+				<div class="sk-child sk-bounce3"></div>
+			</div>
+			<span>Loading items…</span>
+		</div>
+		<div *ngIf="!loadingItems && !selectedItem" class="text-muted text-truncate" (click)="!disabled && open($event)"><span>{{placeholder || 'Select an item..'}}</span></div>
+		<div *ngIf="!loadingItems && selectedItem" class="selected-value-selection d-block text-truncate" (click)="!disabled && open($event)">
+			<ng-container *ngTemplateOutlet="selectedItemTemplate; context: {$implicit: selectedItem}"></ng-container>
+			<i *ngIf="!disableReset" class="mdi mdi-close" (click)="!disabled && !disableReset && resetSelection($event)"></i>
+		</div>
+		<button #chevronButton class="btn btn-primary toggle-button" type="button" (click)="!disabled && open($event)" [disabled]="collapsed && loadingItems">
+			<i class="mdi" [ngClass]="{'mdi-chevron-down': collapsed, 'mdi-chevron-up': !collapsed}"></i>
+		</button>
+	</div>
+	<div class="list-container" *ngIf="!disabled && !collapsed">
+		<div class="search-bar-container">
+			<input #searchInput [(ngModel)]="search" (ngModelChange)="searchChanged($event)" class="form-control search-bar" type="text" placeholder="Filter">
+			<i class="mdi mdi-filter-variant text-muted"></i>
+		</div>
+		<div #listItemContainer class="list-item-container mt-1">
+			<div *ngIf="filteredItems.length === 0" class="empty-list text-center py-2 text-muted font-weight-bold">No Values</div>
+			<ng-container *ngFor="let item of filteredItems; let idx = index">
+				<div 	[ngClass]="{'selected': item === selectedItem, 'pre-selected': item === preSelectedItem, 'disabled': item.disabled, 'different-group-order-bordered': hasDifferentGroupOrder(item, filteredItems[idx + 1])}"
+						class="item d-block" 
+						(click)="selectItem(item)"
+						attr.scrollId="{{idx}}"
+						(mouseenter)="showTooltip(item)"
+						(mouseleave)="hideTooltip(item)">
+					<div class="text-truncate"><ng-container *ngTemplateOutlet="listItemTemplate; context: {$implicit: item}"></ng-container></div>
+				</div>
+			</ng-container>
+		</div>
+		<div class="disabled-tooltip" [innerHTML]="disabledItemMessage" [ngClass]="{'show': showTooltipBool}"></div>
+	</div>
+</div>

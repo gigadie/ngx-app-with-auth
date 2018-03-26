@@ -1,0 +1,41 @@
+.app-component {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: #FFF;
+
+	.container-fluid {
+		height: 100%;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 0;
+		padding-top: 64px;
+		margin-top: -64px;
+		overflow: hidden;
+
+		.sidebar,
+		.app-body {
+			height: 100%;
+			overflow: auto;
+		}
+		.sidebar {
+			background-color: #f5f5f5;
+		}
+
+		.sidebar {
+			float: left;
+			width: 200px;
+		}
+		.app-body {
+
+			padding: 10px;
+
+			&.with-menu {
+				margin-left: 215px;
+
+				padding: 10px 10px 10px 0;
+			}
+		}
+	}
+}

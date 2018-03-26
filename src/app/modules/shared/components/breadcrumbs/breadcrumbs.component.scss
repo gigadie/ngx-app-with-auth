@@ -1,0 +1,19 @@
+.breadcrumbs {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	margin-bottom: 15px;
+    color: #999;
+    
+	span {
+		margin: 0px 5px;
+		&:first-child {
+			margin-left: 0px;
+		}
+	}
+
+	.breadcrumb-last {
+		font-weight: bold;
+		color: #555;
+		font-size: 13.5px;
+	}
+}

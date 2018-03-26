@@ -1,0 +1,11 @@
+<div class="breadcrumbs">
+	<a [routerLink]="['/home']">
+		<span>Home</span>
+	</a>
+	<span *ngFor="let item of items; last as isLast">
+		<span class="breadcrumb-separator">/</span>
+		<a *ngIf="item.routerLink" [routerLink]="item.routerLink">{{item.title}}</a>
+		<a *ngIf="item.url" [href]="item.url">{{item.title}}</a>
+		<span *ngIf="!item.routerLink && !item.url" [ngClass]="{'breadcrumb-last': isLast}">{{item.title}}</span>
+	</span>
+</div>

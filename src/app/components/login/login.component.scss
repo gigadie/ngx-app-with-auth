@@ -1,0 +1,47 @@
+.mat-card {
+	max-width: 320px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.mat-card-actions {
+	margin-left: 0;
+	margin-right: 0;
+}
+.full-width {
+	width: 100%;
+}
+
+.bold-big-text {
+	.mat-card-header-text {
+		margin: 0;
+		font-size: 16px;
+		font-weight: bold;
+	}
+}
+
+.mat-progress-bar {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.status-button {
+	position: relative;
+
+	.saving {
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		top: 3px;
+
+		.sk-three-bounce {
+			width: 50px;
+			margin: 3px;
+			.sk-child {
+				width: 10px;
+				height: 10px;
+				background-color: #fff !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+<div>
+	<h2>Posts</h2>
+
+	<ng-template #sectionLoading>
+		<div class="initial-loading">
+			<div class="app-loading section-loading">
+				<div class="sk-folding-cube">
+					<div class="sk-cube1 sk-cube"></div>
+					<div class="sk-cube2 sk-cube"></div>
+					<div class="sk-cube4 sk-cube"></div>
+					<div class="sk-cube3 sk-cube"></div>
+				</div>
+			</div>
+		</div>
+	</ng-template>
+
+	<ng-container *ngIf="posts else sectionLoading">
+		<div *ngFor="let post of posts" class="card my-2">
+			<div class="card-body">
+				<h5 class="card-title">{{post.title}}</h5>
+				<p class="card-text">{{post.content}}</p>
+			</div>
+		</div>
+	</ng-container>
+
+</div>

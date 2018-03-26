@@ -1,5 +1,9 @@
 /* SystemJS module definition */
 declare var module: NodeModule;
 interface NodeModule {
-  id: string;
+	id: string;
+}
+interface Window {
+	ActiveXObject?: any;
+	ga?: any;
 }
