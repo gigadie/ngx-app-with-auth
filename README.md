@@ -1,5 +1,6 @@
 # Generic FE App - NGX - With Authentication
 ### Angular 5.x
+#### This app needs to be used with api [nodejs-api](https://github.com/gigadie/nodejs-api) which listens on http://localhost:8888
 
 ## Dependencies
 
